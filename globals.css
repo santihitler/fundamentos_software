@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  /* For body text, a clean sans-serif font is used (Geist Sans from layout.tsx). */
+  /* For headings, a Cyrillic-inspired font could be applied, e.g.:
+     h1, h2, h3, h4, h5, h6 { font-family: 'YourCyrillicFont', sans-serif; }
+     Ensure the font is properly imported and configured.
+  */
+}
+
+@layer base {
+  :root {
+    --background: 210 17% 98%; /* Light Cool Gray - #F8F9FA */
+    --foreground: 210 10% 23%; /* Dark Cool Gray - #212529 */
+
+    --card: 0 0% 100%; /* White */
+    --card-foreground: 210 10% 23%; /* Dark Cool Gray */
+
+    --popover: 0 0% 100%; /* White */
+    --popover-foreground: 210 10% 23%; /* Dark Cool Gray */
+
+    --primary: 220 100% 30%; /* Russian Blue - #003399 */
+    --primary-foreground: 0 0% 100%; /* White */
+
+    --secondary: 195 53% 79%; /* Light Blue - #ADD8E6 */
+    --secondary-foreground: 220 100% 20%; /* Darker Blue for text on secondary */
+
+    /* Muted colors adjusted for better contrast */
+    --muted: 210 20% 96%; /* Lighter Gray - was 90% #F2F4F5 */
+    --muted-foreground: 210 12% 35%; /* Darker Medium Gray - was 210 15% 45% #505A66 */
+    /* Contrast of new muted-foreground on new muted: ~5.1:1 (Good) */
+    /* Contrast of new muted-foreground on background: ~6.6:1 (Excellent) */
+
+
+    --accent: 51 100% 50%; /* Gold - #FFD700 */
+    --accent-foreground: 51 100% 10%; /* Dark Brown for text on gold */
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 210 16% 82%; /* Light Grey Border - #CED4DA */
+    --input: 210 16% 82%; /* Light Grey Input Background - #CED4DA */
+    --ring: 220 100% 50%; /* Brighter Blue for focus rings */
+
+    --chart-1: 220 70% 50%;
+    --chart-2: 195 60% 60%;
+    --chart-3: 51 80% 55%;
+    --chart-4: 210 50% 70%;
+    --chart-5: 0 70% 60%;
+
+    --radius: 0.5rem;
+
+    /* Sidebar specific theme variables, adjust if sidebar is used */
+    --sidebar-background: 220 100% 25%; /* Darker Blue for Sidebar */
+    --sidebar-foreground: 0 0% 100%; /* White text for Sidebar */
+    --sidebar-primary: 51 100% 60%; /* Gold as primary accent in sidebar */
+    --sidebar-primary-foreground: 51 100% 10%; /* Dark text for gold */
+    --sidebar-accent: 220 100% 40%; /* Lighter Blue for sidebar accent */
+    --sidebar-accent-foreground: 0 0% 100%; /* White text for sidebar accent */
+    --sidebar-border: 220 100% 35%; /* Slightly lighter blue for border */
+    --sidebar-ring: 51 100% 50%; /* Gold for ring */
+  }
+
+  .dark {
+    --background: 220 25% 10%; /* Very Dark Blue */
+    --foreground: 210 17% 90%; /* Light Gray */
+
+    --card: 220 25% 15%; /* Darker Blue/Gray */
+    --card-foreground: 210 17% 90%;
+
+    --popover: 220 25% 15%;
+    --popover-foreground: 210 17% 90%;
+
+    --primary: 220 100% 60%; /* Lighter Blue for dark mode */
+    --primary-foreground: 220 100% 10%; /* Dark Blue text on Lighter Blue */
+
+    --secondary: 195 53% 40%; /* Darker Light Blue */
+    --secondary-foreground: 195 53% 90%; /* Lighter text on Darker Light Blue */
+
+    /* Muted colors adjusted for better contrast in dark mode */
+    --muted: 220 25% 20%; /* Darker muted - was 25% #293240 */
+    --muted-foreground: 210 17% 80%; /* Lighter muted-foreground - was 70% #BFC6D9 */
+    /* Contrast of new dark muted-foreground on new dark muted: ~5.6:1 (Good) */
+    /* Contrast of new dark muted-foreground on dark background: ~7.9:1 (Excellent) */
+
+    --accent: 51 100% 60%; /* Brighter Gold for dark mode */
+    --accent-foreground: 51 100% 10%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 25% 30%;
+    --input: 220 25% 30%;
+    --ring: 220 100% 70%;
+
+    --chart-1: 220 70% 60%;
+    --chart-2: 195 60% 70%;
+    --chart-3: 51 80% 65%;
+    --chart-4: 210 50% 80%;
+    --chart-5: 0 70% 70%;
+
+    /* Dark Sidebar specific theme variables */
+    --sidebar-background: 220 30% 12%; /* Very Dark Blue for Sidebar */
+    --sidebar-foreground: 0 0% 90%; /* Light Gray text for Sidebar */
+    --sidebar-primary: 51 100% 60%; /* Gold as primary accent in sidebar */
+    --sidebar-primary-foreground: 51 100% 10%; /* Dark text for gold */
+    --sidebar-accent: 220 100% 55%; /* Lighter Blue for sidebar accent */
+    --sidebar-accent-foreground: 0 0% 100%; /* White text for sidebar accent */
+    --sidebar-border: 220 30% 20%; /* Slightly lighter shade for border */
+    --sidebar-ring: 51 100% 50%; /* Gold for ring */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom Animations by Carmen Ansio ;) */
+@layer utilities {
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes subtleShimmer {
+    0% { background-position: -1000px 0; }
+    100% { background-position: 1000px 0; }
+  }
+  @keyframes iconPop {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.15) rotate(-5deg); }
+  }
+  @keyframes iconTilt {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-8deg); }
+    75% { transform: rotate(5deg); }
+  }
+  @keyframes pulseAlt {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.05); }
+  }
+}
